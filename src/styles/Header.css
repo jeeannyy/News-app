@@ -1,0 +1,12 @@
+header {
+    font-size: 180px;
+    font-family: 'Saira';
+    font-weight: 900;
+    color:rgb(0, 0, 0);
+    font-style: italic;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 50px;
+    margin-top: 50px;
+    
+}

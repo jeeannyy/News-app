@@ -1,0 +1,16 @@
+ul {
+    list-style-type: none;    
+    font-size: 35px;
+  
+    font-family: 'Saira';
+    font-weight: 600;
+    color:rgb(0, 0, 0);
+    display: flex;
+    justify-content: center;
+   
+   
+}
+
+li{
+    padding: 20px;
+}
