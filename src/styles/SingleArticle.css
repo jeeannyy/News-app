@@ -9,7 +9,8 @@
 
 .articleList-single{
     list-style-type: none;
-    width:400px;
+    width:700px;
+
     
 }
 
@@ -25,7 +26,8 @@
 padding-right: 20px;    
 display: flex;
 align-items: center;
-
+margin-bottom: 0;
+padding-bottom: 0;
 
 }
 
@@ -40,22 +42,77 @@ align-items: center;
     display: flex;
     flex-direction: row;
     justify-content: center;
+    margin-top: 0;
+    padding-top: 0;
+    margin-bottom: 60px;
     
 }
 
 .voteUp{
-    font-size: 50px;
+    font-size: 40px;
     margin-right: 40px;
     padding:5px 15px 5px 15px;
-    border:3px solid rgba(41, 40, 40, 0.533);
+    border:3px solid rgba(41, 40, 40, 0.654);
+    border-radius: 20px;
     cursor: pointer;
+    
 }
 
 .voteDown{
-    font-size: 50px;
+    font-size: 40px;
     margin-left: 40px;
     padding:5px 15px 5px 15px;
-    border:3px solid rgba(41, 40, 40, 0.533);
+    border:3px solid rgba(41, 40, 40, 0.654);
+    border-radius: 20px;
     cursor: pointer;
 
+}
+
+
+form{
+    display: flex;
+    justify-content: center;
+}
+
+
+
+.commentInput{
+    font-size: 22px;
+    font-family: 'Saira';
+    font-weight: 600;
+    width: 550px
+}
+
+.commentBtn{
+    font-size: 22px;
+    font-family: 'Saira';
+    font-weight: 800;
+    padding:0px 5px 0px 5px;
+    margin-left: 10px;
+}
+
+.addedComments{
+    list-style-type: none;
+    font-size: 22px;
+    font-family: 'Saira';
+    font-weight: 600;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+
+.addedComments ul{
+    padding: 0;
+    margin:0;
+
+   
+}
+
+
+.addedComments li{
+    padding: 0;
+    margin:0;
+  
+   
 }

@@ -19,9 +19,10 @@ const SingleArticle = () => {
     const [articlesById, setArticlesById] = useState([]);
     const [loading, setLoading] = useState(true);
     const [voteCounter, setVoteCounter] = useState(0);
-
+    const [addComment, setAddComment] = useState("");
+    const [addedComments, setAddedComments] = useState([]);
+    
     const {articleId} = useParams();
-    // console.log(articleId);
 
     useEffect(() => {
         setLoading(true);
@@ -36,15 +37,24 @@ const SingleArticle = () => {
     const voteUp = () => {
         setVoteCounter(voteCounter + 1);
     };
-
     const voteDown = () => {
         setVoteCounter(voteCounter - 1);
     };
 
+    const onChange = (event) => setAddComment(event.target.value);
+    const onSubmit = (event) => {
+        event.preventDefault();
+        if (addComment === ""){
+            return;
+        }
+        setAddedComments((currentArray) => [addComment, ...currentArray]);
+        setAddComment("");
+    };
+
     if(loading) return <div>Loading...</div>
 
-console.log(articlesById);
-console.log(articlesById.title);
+    console.log(articlesById);
+    console.log(articlesById.title);
 
     return(
         <div>
@@ -62,16 +72,35 @@ console.log(articlesById.title);
             <div className='articleList-heart'>
             <h4>💜 {voteCounter}</h4>
             <h4>💬 {articlesById.comment_count}</h4>
+            {/* <h4>💬 {addedComments.length}</h4> */}
             </div>
             </div>
             </li>
             </ul>
         </div>
-
             <div className='vote'>
             <h3 className='voteUp' onClick={voteUp}>🙂</h3>
             <h3 className='voteDown' onClick={voteDown}>😕</h3>
             </div>
+
+            <div className='commentSection'>
+                {/* <h4>Leave your comment! {addedComments.length}</h4> */}
+                <form onSubmit={onSubmit}>
+                <input 
+                className='commentInput'
+                onChange={onChange}
+                value={addComment}
+                type="text"
+                placeholder='Add a comment' />
+                <button className='commentBtn'>Submit</button>
+                </form>
+            </div>
+            <ul className='addedComments'>
+                    {addedComments.map((comment, index) => (
+                        <li key={index}>{comment}</li>
+                    ))}
+                </ul>
+
 
         <Footer />
         </div>
