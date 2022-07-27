@@ -38,6 +38,7 @@ const Topic = () => {
     }, [topic]);
 
     if(loading) return <div>Loading...</div>
+    console.log("hi");
 
     return(
         <div>
