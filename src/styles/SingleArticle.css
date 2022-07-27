@@ -26,6 +26,7 @@ padding-right: 20px;
 display: flex;
 align-items: center;
 
+
 }
 
 .readmore{
@@ -33,4 +34,28 @@ align-items: center;
   
     text-decoration: none;
     
+}
+
+.vote{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    
+}
+
+.voteUp{
+    font-size: 50px;
+    margin-right: 40px;
+    padding:5px 15px 5px 15px;
+    border:3px solid rgba(41, 40, 40, 0.533);
+    cursor: pointer;
+}
+
+.voteDown{
+    font-size: 50px;
+    margin-left: 40px;
+    padding:5px 15px 5px 15px;
+    border:3px solid rgba(41, 40, 40, 0.533);
+    cursor: pointer;
+
 }

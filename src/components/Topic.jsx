@@ -55,8 +55,8 @@ const Topic = () => {
             <h2>{article.title}</h2>
             <h4>{article.body}</h4>
             <div className='articleList-heart'>
-            <h4>💜 {article.comment_count}</h4>
-            <h4>💬 {article.votes}</h4>
+            <h4>💜 {article.votes}</h4>
+            <h4>💬 {article.comment_count}</h4>
             <h4><Link className="readmore" to={`/article/${article.article_id}`}>➡️</Link></h4>
             </div>
             </div>

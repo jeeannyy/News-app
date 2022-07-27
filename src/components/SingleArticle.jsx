@@ -12,11 +12,13 @@ import Footer from './Footer';
 
 import '../styles/Header.css';
 import '../styles/Nav.css';
+import '../styles/SingleArticle.css';
 import '../styles/Footer.css';
 
 const SingleArticle = () => {
     const [articlesById, setArticlesById] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [voteCounter, setVoteCounter] = useState(0);
 
     const {articleId} = useParams();
     // console.log(articleId);
@@ -31,7 +33,13 @@ const SingleArticle = () => {
         });
     }, [articleId]);
 
+    const voteUp = () => {
+        setVoteCounter(voteCounter + 1);
+    };
 
+    const voteDown = () => {
+        setVoteCounter(voteCounter - 1);
+    };
 
     if(loading) return <div>Loading...</div>
 
@@ -52,14 +60,18 @@ console.log(articlesById.title);
             <h2>{articlesById.title}</h2>
             <h4>{articlesById.body}</h4>
             <div className='articleList-heart'>
-            <h4>💜 {articlesById.comment_count}</h4>
-            <h4>💬 {articlesById.votes}</h4>
+            <h4>💜 {voteCounter}</h4>
+            <h4>💬 {articlesById.comment_count}</h4>
             </div>
             </div>
             </li>
             </ul>
         </div>
 
+            <div className='vote'>
+            <h3 className='voteUp' onClick={voteUp}>🙂</h3>
+            <h3 className='voteDown' onClick={voteDown}>😕</h3>
+            </div>
 
         <Footer />
         </div>
