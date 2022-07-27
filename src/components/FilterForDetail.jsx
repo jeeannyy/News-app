@@ -3,7 +3,7 @@ import React from 'react';
 
 const FilterForDetail=()=>{
     return(
-        <div>
+        <div className='filter-detail'>
         <button>Likes</button>
         <button>Comments</button>
         <button>Latest</button>

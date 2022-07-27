@@ -5,16 +5,15 @@ import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 import axios from 'axios';
 
 
+
 import Header from './Header';
 import Nav from './Nav';
 import FilterForDetail from './FilterForDetail';
-// import SingleArticle from './SingleArticle';
 import Footer from './Footer';
 
 import '../styles/Header.css';
 import '../styles/Nav.css';
-import '../styles/ArticleList.css';
-import '../styles/Filter.css';
+import '../styles/FilterForDetail';
 import '../styles/Footer.css';
 
 
