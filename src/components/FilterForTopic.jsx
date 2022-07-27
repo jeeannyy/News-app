@@ -11,9 +11,9 @@ const FilterForTopic = () => {
 
     return(
   <div className='filter-topics'>
-        <button><Link to={"/topic/cooking"}>Cooking</Link></button>
-        <button><Link to={"/topic/coding"}>Coding</Link></button>
-        <button><Link to={"/topic/football"}>Football</Link></button>
+        <button><Link className="cookingLink" to={"/topic/cooking"}>Cooking</Link></button>
+        <button><Link className="codingLink" to={"/topic/coding"}>Coding</Link></button>
+        <button><Link className="footballLink" to={"/topic/football"}>Football</Link></button>
   </div>
     );
 }

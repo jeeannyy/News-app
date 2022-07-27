@@ -13,7 +13,7 @@ import Footer from './Footer';
 
 import '../styles/Header.css';
 import '../styles/Nav.css';
-import '../styles/FilterForDetail';
+import '../styles/FilterForDetail.css';
 import '../styles/Footer.css';
 
 
@@ -45,7 +45,7 @@ const Topic = () => {
         <Nav />
         <FilterForDetail />
     
-        <div>
+        <div className='articleList-container'>
         {articlesByTopic.map((article) => (
                 <ul>
                 <li className='articleList-single'>

@@ -4,11 +4,12 @@
     font-weight: 300;
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
 }
 
 .articleList-single{
     list-style-type: none;
-    width:500px;
+    width:400px;
     
 }
 

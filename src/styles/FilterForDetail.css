@@ -5,7 +5,7 @@
 }
 
 .filter-detail button{
-    color:rgb(226, 19, 19);
+    color: black;
     font-size: 30px;
     margin: 5px;
     background-color: rgb(184, 240, 115);
@@ -14,4 +14,34 @@
     padding: 15px;
     font-family: 'Saira';
     font-weight: 400;
+    margin-bottom: 100px;
 } 
+
+
+/* filtered topic article */
+
+.articleList-container{
+    font-size: 20px;
+    font-family: 'Saira';
+    font-weight: 300;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.articleList-single{
+    list-style-type: none;
+    width:500px;
+    
+}
+
+.articleList-heart{
+    display: flex;
+    flex-direction: row;
+    
+}
+
+.articleList-heart h4{
+   
+padding-right: 20px;    
+}
