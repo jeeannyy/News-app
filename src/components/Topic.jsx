@@ -5,16 +5,15 @@ import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 import axios from 'axios';
 
 
+
 import Header from './Header';
 import Nav from './Nav';
 import FilterForDetail from './FilterForDetail';
-// import SingleArticle from './SingleArticle';
 import Footer from './Footer';
 
 import '../styles/Header.css';
 import '../styles/Nav.css';
-import '../styles/ArticleList.css';
-import '../styles/Filter.css';
+import '../styles/FilterForDetail.css';
 import '../styles/Footer.css';
 
 
@@ -38,6 +37,7 @@ const Topic = () => {
     }, [topic]);
 
     if(loading) return <div>Loading...</div>
+    console.log("hi");
 
     return(
         <div>
@@ -45,7 +45,7 @@ const Topic = () => {
         <Nav />
         <FilterForDetail />
     
-        <div>
+        <div className='articleList-container'>
         {articlesByTopic.map((article) => (
                 <ul>
                 <li className='articleList-single'>
@@ -57,6 +57,7 @@ const Topic = () => {
             <div className='articleList-heart'>
             <h4>💜 {article.comment_count}</h4>
             <h4>💬 {article.votes}</h4>
+            <h4><Link className="readmore" to={`/article/${article.article_id}`}>➡️</Link></h4>
             </div>
             </div>
             </li>

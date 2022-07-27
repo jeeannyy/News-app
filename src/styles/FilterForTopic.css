@@ -1,22 +1,11 @@
-.categories_container{
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 120px;
-    
 
-}
-
-.categories_topic{
+.filter-topics{
     display: flex;
     justify-content: center;
+
 }
 
-.categories_filter{
-    display: flex;
-    justify-content: center;
-}
-
-.categories_container button{
+.filter-topics button{
     color:black;
     font-size: 30px;
     margin: 5px;
@@ -26,4 +15,24 @@
     padding: 15px;
     font-family: 'Saira';
     font-weight: 400;
+    margin-bottom: 100px;
+} 
+
+.cookingLink{
+    text-decoration: none;
+    color:black;
+
+}
+
+.codingLink{
+    text-decoration: none;
+    color:black;
+
+
+}
+
+.footballLink{
+    text-decoration: none;
+    color:black;
+
 }

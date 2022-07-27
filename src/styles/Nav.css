@@ -22,3 +22,9 @@ nav{
 .navLi{
     padding: 30px;
 }
+
+.HomeLink{
+    text-decoration: none;
+    color: black;
+    cursor: pointer;
+}

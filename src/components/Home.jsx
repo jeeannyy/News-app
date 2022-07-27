@@ -8,14 +8,12 @@ import Header from './Header';
 import Nav from './Nav';
 import FilterForTopic from './FilterForTopic';
 import ArticleList from './ArticleList';
-import Topic from './Topic';
-// import SingleArticle from './SingleArticle';
 import Footer from './Footer';
 
 import '../styles/Header.css';
 import '../styles/Nav.css';
+import '../styles/FilterForTopic.css';
 import '../styles/ArticleList.css';
-import '../styles/Filter.css';
 import '../styles/Footer.css';
 
 
