@@ -37,6 +37,7 @@ const ArticleList = () => {
             <div className='articleList-heart'>
             <h4>💜 {article.comment_count}</h4>
             <h4>💬 {article.votes}</h4>
+            <h4><Link className="readmore" to={`/article/${article.article_id}`}>➡️</Link></h4>
             </div>
             </div>
             </li>
