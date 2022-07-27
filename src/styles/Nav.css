@@ -1,16 +1,24 @@
-ul {
+nav{
+    margin-top: 50px;
+    margin-bottom: 20px;
+}
+
+
+.navUl {
     list-style-type: none;    
-    font-size: 35px;
+    font-size: 40px;
   
     font-family: 'Saira';
     font-weight: 600;
     color:rgb(0, 0, 0);
     display: flex;
     justify-content: center;
+
+   
    
    
 }
 
-li{
-    padding: 20px;
+.navLi{
+    padding: 30px;
 }

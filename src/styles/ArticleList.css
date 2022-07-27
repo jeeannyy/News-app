@@ -1,0 +1,24 @@
+.articleList-container{
+    font-size: 20px;
+    font-family: 'Saira';
+    font-weight: 300;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.articleList-single{
+    list-style-type: none;
+    width:500px;
+    
+}
+
+.articleList-heart{
+    display: flex;
+    flex-direction: row;
+    
+}
+
+.articleList-heart h4{
+   
+padding-right: 20px;    
+}

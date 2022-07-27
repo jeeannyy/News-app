@@ -1,5 +1,6 @@
 header {
-    font-size: 180px;
+   
+    font-size: 200px;
     font-family: 'Saira';
     font-weight: 900;
     color:rgb(0, 0, 0);
@@ -7,6 +8,6 @@ header {
     display: flex;
     justify-content: center;
     margin-bottom: 50px;
-    margin-top: 50px;
+    margin-top: 70px;
     
 }

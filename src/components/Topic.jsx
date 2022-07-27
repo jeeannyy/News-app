@@ -2,31 +2,51 @@ import React, {useState, useEffect} from 'react';
 import { useParams, useSearchParams, useNavigate} from "react-router-dom";
 import { fetchArticles, fetchArticlesByTopic } from "../utils/api";
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
+import axios from 'axios';
+
+
+import Header from './Header';
+import Nav from './Nav';
+import FilterForDetail from './FilterForDetail';
+// import SingleArticle from './SingleArticle';
+import Footer from './Footer';
+
+import '../styles/Header.css';
+import '../styles/Nav.css';
+import '../styles/ArticleList.css';
+import '../styles/Filter.css';
+import '../styles/Footer.css';
 
 
 
-const ArticleList = () => {
-    const [articles, setArticles] = useState({});
+const Topic = () => {
+    const [articlesByTopic, setArticlesByTopics] = useState([]);
     const [loading, setLoading] = useState(true);
 
-    const {article_id} = useParams();
+    const {topic} = useParams();
+    
 
 
     useEffect(() => {
         setLoading(true);
-        fetch(`https://jeeanny.herokuapp.com/api/articles`)
+        fetch(`https://jeeanny.herokuapp.com/api/articles?sort_by=topic&topic=${topic}`)
         .then((response) => response.json())
         .then((data) => {
-            setArticles(data.articles);
+            setArticlesByTopics(data.articles);
             setLoading(false);
         });
-    }, []);
+    }, [topic]);
 
     if(loading) return <div>Loading...</div>
 
     return(
-       <div className='articleList-container'>
-        {articles.map((article) => (
+        <div>
+        <Header />
+        <Nav />
+        <FilterForDetail />
+    
+        <div>
+        {articlesByTopic.map((article) => (
                 <ul>
                 <li className='articleList-single'>
             <div key={article.article_id}>
@@ -43,8 +63,10 @@ const ArticleList = () => {
             </ul>
         ))}
         </div>
-    );
-        }
+       
+        <Footer />
+        </div>
+          );
+}
 
-export default ArticleList;
-
+export default Topic;

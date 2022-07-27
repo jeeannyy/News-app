@@ -1,27 +1,22 @@
-//import component
-import Header from './components/Header';
-import Nav from './components/Nav';
-import Container from './components/Container';
-import Footer from './components/Footer';
+import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
+import axios from 'axios';
 
-// import Styling
-import '../src/styles/Header.css';
-import '../src/styles/Nav.css';
-import '../src/styles/Footer.css';
+import Home from './components/Home';
+import Topic from './components/Topic';
 
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 
 function App() {
   return (
-   
+    <BrowserRouter>
     <div>
-      <Header />
-      <Nav />
-      <Container />
-      <Footer />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/topic/:topic" element={<Topic />} />
+        </Routes>
     </div>
-    
+    </BrowserRouter>
+
 
   );
 }
