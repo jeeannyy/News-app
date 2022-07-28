@@ -1,6 +1,5 @@
 import React, {useState, useEffect} from 'react';
 import { useParams, useSearchParams, useNavigate} from "react-router-dom";
-import { fetchArticles, fetchArticlesByTopic } from "../utils/api";
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 import axios from 'axios';
 
@@ -14,6 +13,7 @@ import '../styles/Header.css';
 import '../styles/Nav.css';
 import '../styles/SingleArticle.css';
 import '../styles/Footer.css';
+import { response } from 'express';
 
 const SingleArticle = () => {
     const [articlesById, setArticlesById] = useState([]);
@@ -22,9 +22,11 @@ const SingleArticle = () => {
     const [addComment, setAddComment] = useState("");
     const [addedComments, setAddedComments] = useState([]);
     const [commentsById, setCommentsById] = useState([]);
+    const [postComment, setPostComment] = useState(null);
     
     const {articleId} = useParams();
 
+    
     // Get article ID
     useEffect(() => {
         setLoading(true);
@@ -37,15 +39,15 @@ const SingleArticle = () => {
     }, [articleId]);
 
     // Get comments list
-    useEffect(() => {
-        setLoading(true);
-        fetch(`https://jeeanny.herokuapp.com/api/articles/${articleId}/comments`)
-        .then((response) => response.json())
-        .then((data) => {
-            setCommentsById(data.articles);
-            setLoading(false);
-        });
-    }, [articleId]);
+    // useEffect(() => {
+    //     setLoading(true);
+    //     fetch(`https://jeeanny.herokuapp.com/api/articles/${articleId}/comments`)
+    //     .then((response) => response.json())
+    //     .then((data) => {
+    //         setCommentsById(data.articles);
+    //         setLoading(false);
+    //     });
+    // }, [articleId]);
 
     
 
@@ -69,6 +71,31 @@ const SingleArticle = () => {
     };
 
     console.log(commentsById, "<<<<<<<<<<<<")
+
+
+    // Post new comments
+    useEffect(()=>{
+        axios.get(`https://jeeanny.herokuapp.com/api/articles/${articleId}/comments`)
+        .then((response) => {
+            setPostComment(response.data);
+        })
+    }, [articleId]);
+
+    const CreatePost = () => {
+        axios
+        .post(`https://jeeanny.herokuapp.com/api/articles/${articleId}/comments`, 
+        {
+            username: "Hiii",
+            body: "This is a new post"
+        })
+        .then((response) => {
+            setPostComment(response.data);
+        });
+    }
+
+    if(!postComment) return "No Post!";
+
+
     // Loading
     if(loading) return <div>Loading...</div>
 
@@ -100,7 +127,6 @@ const SingleArticle = () => {
             </div>
 
             <div>
-                {/* <h4>Leave your comment! {addedComments.length}</h4> */}
                 <form onSubmit={onSubmit}>
                 <input 
                 className='commentInput'
@@ -129,8 +155,14 @@ const SingleArticle = () => {
             </div>
             </li>
             </ul>
-        ))}
-                    
+        ))}       
+        </div>
+
+
+        <div>
+            <h1>{postComment.title}</h1>
+            <h1>{postComment.body}</h1>
+            <button onClick={CreatePost}>Submit</button>
         </div>
 
         <Footer />
