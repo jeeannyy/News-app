@@ -19,8 +19,15 @@ const SingleArticle = () => {
     const [addComment, setAddComment] = useState("");
     const [addedComments, setAddedComments] = useState([]);
     const [commentsById, setCommentsById] = useState([]);
+
+    // SortBy
+    const [sortByDate, setSortByDate] = useState([]);
+    const [sortByVote, setSortByVote] = useState([]);
+    const [sortByComment, setSortByComment] = useState([]);
+    const [ascending, setAscending] = useState([]);
     
     const {articleId} = useParams();
+    const {createdDate} = useParams();
 
     
     // Get article ID
@@ -33,6 +40,7 @@ const SingleArticle = () => {
             setLoading(false);
         });
     }, [articleId]);
+
 
     // Get comments list
     useEffect(() => {
@@ -80,6 +88,28 @@ const SingleArticle = () => {
         setArticlesById((article) => {return {...article, comment_count:article.comment_count+1}})
         setAddComment("");
     };
+
+    // Delete comment
+
+    const DeletePost = () => {
+        axios
+        .delete(`https://jeeanny.herokuapp.com/api/comments/:comment_id`)
+        .then(()=>{
+            alert("Post deleted!");
+            setAddComment(null)
+        })
+    }
+
+    // Sort by Date
+    useEffect(() => {
+        setLoading(true);
+        fetch(`https://jeeanny.herokuapp.com/api/articles?sort_by=created_at`)
+        .then((response) => response.json())
+        .then((data) => {
+            setSortByDate(data.articles);
+            setLoading(false);
+        });
+    }, [createdDate]);
 
 
     // Loading
@@ -136,11 +166,33 @@ const SingleArticle = () => {
             <div key={comment.article_id}>
             <h2>{comment.author}</h2>
             <h4>{comment.body}</h4>
+            <h4>🗑</h4>
             </div>
             </li>
             </ul>
         ))}       
         </div>
+
+{/* Sort by */}
+        {/* <div className='articleList-container'>
+        {sortByDate.map((article) => (
+                <ul>
+                <li className='articleList-single'>
+            <div key={article.article_id}>
+            <h4>{article.author}</h4>
+            <h4>{article.created_at}</h4>
+            <h2>{article.title}</h2>
+            <h4>{article.body}</h4>
+            <div className='articleList-heart'>
+            <h4>💜 {article.votes}</h4>
+            <h4>💬 {article.comment_count}</h4>
+            <h4><Link className="readmore" to={`/article/${article.article_id}`}>➡️</Link></h4>
+            </div>
+            </div>
+            </li>
+            </ul>
+        ))}
+        </div> */}
         <Footer />
         </div>
     );

@@ -20,20 +20,21 @@ import '../styles/Footer.css';
 const Topic = () => {
     const [articlesByTopic, setArticlesByTopics] = useState([]);
     const [loading, setLoading] = useState(true);
-
+    const queryParams = new URLSearchParams(window.location.search);
+    const sort = queryParams.get("sort_by");
     const {topic} = useParams();
     
-
+console.log(sort, "<<<<<");
 
     useEffect(() => {
         setLoading(true);
-        fetch(`https://jeeanny.herokuapp.com/api/articles?sort_by=topic&topic=${topic}`)
+        fetch(sort ? `https://jeeanny.herokuapp.com/api/articles?topic=${topic}&sort_by=${sort}` : `https://jeeanny.herokuapp.com/api/articles?topic=${topic}`)
         .then((response) => response.json())
         .then((data) => {
             setArticlesByTopics(data.articles);
             setLoading(false);
         });
-    }, [topic]);
+    }, [sort, topic]);
 
     if(loading) return <div>Loading...</div>
     console.log("hi");
@@ -42,8 +43,10 @@ const Topic = () => {
         <div>
         <Header />
         <Nav />
-        <FilterForDetail />
-    
+        <FilterForDetail 
+            topic = {topic}
+        />
+        
         <div className='articleList-container'>
         {articlesByTopic.map((article) => (
                 <ul>
