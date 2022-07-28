@@ -19,6 +19,7 @@ const SingleArticle = () => {
     const [addComment, setAddComment] = useState("");
     const [addedComments, setAddedComments] = useState([]);
     const [commentsById, setCommentsById] = useState([]);
+    const [deleteComment, setDeleteComment] = useState([]);
 
     // SortBy
     const [sortByDate, setSortByDate] = useState([]);
@@ -27,6 +28,7 @@ const SingleArticle = () => {
     const [ascending, setAscending] = useState([]);
     
     const {articleId} = useParams();
+    const {commentId} = useParams();
     const {createdDate} = useParams();
 
     
@@ -41,7 +43,6 @@ const SingleArticle = () => {
         });
     }, [articleId]);
 
-
     // Get comments list
     useEffect(() => {
         setLoading(true);
@@ -55,13 +56,34 @@ const SingleArticle = () => {
 
 
     // Vote 
+    const PatchVote = () => {
+        axios
+        .patch(`https://jeeanny.herokuapp.com/api/articles/${articleId}`,
+        { 
+            "inc_votes": voteCounter
+        });
+    }
+
     const voteUp = () => {
         setVoteCounter(voteCounter + 1);
+        PatchVote()
     };
     const voteDown = () => {
         setVoteCounter(voteCounter - 1);
+        PatchVote()
     };
 
+console.log(commentId, "comment");
+
+       // Delete comment
+       const deleteComments = () => {
+        axios
+        .delete(`https://jeeanny.herokuapp.com/api/comments/${commentId}`)
+        .then(()=>{
+            console.log("Your comment is deleted!");
+            alert("Your comment is deleted!");
+        })
+    }
 
     // Post new comments
     const CreatePost = (comment) => {
@@ -89,16 +111,6 @@ const SingleArticle = () => {
         setAddComment("");
     };
 
-    // Delete comment
-
-    const DeletePost = () => {
-        axios
-        .delete(`https://jeeanny.herokuapp.com/api/comments/:comment_id`)
-        .then(()=>{
-            alert("Post deleted!");
-            setAddComment(null)
-        })
-    }
 
     // Sort by Date
     useEffect(() => {
@@ -119,10 +131,10 @@ const SingleArticle = () => {
         <div>
         <Header />
         <Nav />
-
-        <div className='articleList-container'>
+<div className='singleArticle-container'>
+        <div className='articleList-container-single'>
             <ul>
-                <li className='articleList-single'>
+                <li className='articleList-singleArticle'>
                     <div key={articlesById.article_id}>
                     <h4>{articlesById.author}</h4>
                     <h4>{articlesById.created_at}</h4>
@@ -136,10 +148,10 @@ const SingleArticle = () => {
                 </li>
             </ul>
         </div>
-            <div className='vote'>
-            <h3 className='voteUp' onClick={voteUp}>🙂</h3>
-            <h3 className='voteDown' onClick={voteDown}>😕</h3>
-            </div>
+        <div className='vote'>
+        <button className='voteUp' onClick={voteUp}>🙂</button>
+        <button className='voteDown' onClick={voteDown}>😕</button>
+        </div>
 
             <div>
                 <form onSubmit={onSubmit}>
@@ -159,40 +171,19 @@ const SingleArticle = () => {
                 </ul>
 
 
-        <div className='comments'>
-        {commentsById.map((comment) => (
-                <ul>
-                <li className='articleList-single'>
-            <div key={comment.article_id}>
-            <h2>{comment.author}</h2>
-            <h4>{comment.body}</h4>
-            <h4>🗑</h4>
+        <div className='commentsList'>
+            {commentsById.map((comment) => (
+                    <div className='singleCommentList'>
+                <div className='singleCommentList' key={comment.article_id}>
+                <h2>{comment.author}</h2>
+                <h3>{comment.body}<span className='deleteBtn' onClick={deleteComments}>❎</span></h3>
+                </div>
             </div>
-            </li>
-            </ul>
-        ))}       
+            ))}       
         </div>
 
-{/* Sort by */}
-        {/* <div className='articleList-container'>
-        {sortByDate.map((article) => (
-                <ul>
-                <li className='articleList-single'>
-            <div key={article.article_id}>
-            <h4>{article.author}</h4>
-            <h4>{article.created_at}</h4>
-            <h2>{article.title}</h2>
-            <h4>{article.body}</h4>
-            <div className='articleList-heart'>
-            <h4>💜 {article.votes}</h4>
-            <h4>💬 {article.comment_count}</h4>
-            <h4><Link className="readmore" to={`/article/${article.article_id}`}>➡️</Link></h4>
-            </div>
-            </div>
-            </li>
-            </ul>
-        ))}
-        </div> */}
+        </div>
+
         <Footer />
         </div>
     );

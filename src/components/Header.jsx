@@ -1,8 +1,10 @@
 import React from 'react';
+import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
+
 
 const Header = () => {
     return(
-        <header>NC News</header>
+        <header><Link className="HomeLink" to={"/"} >NC News</Link></header>
     );
 }
 
