@@ -21,9 +21,11 @@ const SingleArticle = () => {
     const [voteCounter, setVoteCounter] = useState(0);
     const [addComment, setAddComment] = useState("");
     const [addedComments, setAddedComments] = useState([]);
+    const [commentsById, setCommentsById] = useState([]);
     
     const {articleId} = useParams();
 
+    // Get article ID
     useEffect(() => {
         setLoading(true);
         fetch(`https://jeeanny.herokuapp.com/api/articles/${articleId}`)
@@ -34,6 +36,20 @@ const SingleArticle = () => {
         });
     }, [articleId]);
 
+    // Get comments list
+    useEffect(() => {
+        setLoading(true);
+        fetch(`https://jeeanny.herokuapp.com/api/articles/${articleId}/comments`)
+        .then((response) => response.json())
+        .then((data) => {
+            setCommentsById(data.articles);
+            setLoading(false);
+        });
+    }, [articleId]);
+
+    
+
+    // Vote 
     const voteUp = () => {
         setVoteCounter(voteCounter + 1);
     };
@@ -41,6 +57,7 @@ const SingleArticle = () => {
         setVoteCounter(voteCounter - 1);
     };
 
+    // Add Comment
     const onChange = (event) => setAddComment(event.target.value);
     const onSubmit = (event) => {
         event.preventDefault();
@@ -51,10 +68,9 @@ const SingleArticle = () => {
         setAddComment("");
     };
 
+    console.log(commentsById, "<<<<<<<<<<<<")
+    // Loading
     if(loading) return <div>Loading...</div>
-
-    console.log(articlesById);
-    console.log(articlesById.title);
 
     return(
         <div>
@@ -62,20 +78,20 @@ const SingleArticle = () => {
         <Nav />
 
         <div className='articleList-container'>
-                <ul>
+            <ul>
                 <li className='articleList-single'>
-            <div key={articlesById.article_id}>
-            <h4>{articlesById.author}</h4>
-            <h4>{articlesById.created_at}</h4>
-            <h2>{articlesById.title}</h2>
-            <h4>{articlesById.body}</h4>
-            <div className='articleList-heart'>
-            <h4>💜 {voteCounter}</h4>
-            <h4>💬 {articlesById.comment_count}</h4>
-            {/* <h4>💬 {addedComments.length}</h4> */}
-            </div>
-            </div>
-            </li>
+                    <div key={articlesById.article_id}>
+                    <h4>{articlesById.author}</h4>
+                    <h4>{articlesById.created_at}</h4>
+                    <h2>{articlesById.title}</h2>
+                    <h4>{articlesById.body}</h4>
+                    <div className='articleList-heart'>
+                        <h4>💜 {voteCounter}</h4>
+                        <h4>💬 {articlesById.comment_count}</h4>
+                        {/* <h4>💬 {addedComments.length}</h4> */}
+                    </div>
+                    </div>
+                </li>
             </ul>
         </div>
             <div className='vote'>
@@ -83,7 +99,7 @@ const SingleArticle = () => {
             <h3 className='voteDown' onClick={voteDown}>😕</h3>
             </div>
 
-            <div className='commentSection'>
+            <div>
                 {/* <h4>Leave your comment! {addedComments.length}</h4> */}
                 <form onSubmit={onSubmit}>
                 <input 
@@ -101,6 +117,21 @@ const SingleArticle = () => {
                     ))}
                 </ul>
 
+
+
+        <div className='comments'>
+        {commentsById.map((comment) => (
+                <ul>
+                <li className='articleList-single'>
+            <div key={comment.article_id}>
+            <h2>{comment.author}</h2>
+            <h4>{comment.body}</h4>
+            </div>
+            </li>
+            </ul>
+        ))}
+                    
+        </div>
 
         <Footer />
         </div>
