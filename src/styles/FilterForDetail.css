@@ -17,6 +17,30 @@
     margin-bottom: 100px;
 } 
 
+.likesLink{
+    text-decoration: none;
+    color:black;
+
+}
+
+.commentsLink{
+    text-decoration: none;
+    color:black;
+
+}
+
+.dateLink{
+    text-decoration: none;
+    color:black;
+
+}
+
+.ascendingLink{
+    text-decoration: none;
+    color:black;
+
+}
+
 
 /* filtered topic article */
 

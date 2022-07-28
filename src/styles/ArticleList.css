@@ -5,11 +5,12 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+   
 }
 
 .articleList-single{
     list-style-type: none;
-    width:400px;
+    width:600px;
     
 }
 

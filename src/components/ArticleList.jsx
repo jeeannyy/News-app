@@ -1,6 +1,5 @@
 import React, {useState, useEffect} from 'react';
 import { useParams, useSearchParams, useNavigate} from "react-router-dom";
-import { fetchArticles, fetchArticlesByTopic } from "../utils/api";
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 
 
