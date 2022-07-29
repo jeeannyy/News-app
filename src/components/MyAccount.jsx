@@ -53,12 +53,12 @@ const MyAccount = () => {
         <Nav />
         <div className='account-container'>
         <div className='greeting'>
-        <h2>Hi there!<p>If you want to add comments, please login 🔒</p></h2>
-        <img ></img>
+        {/* <h2>Hi! Choose your Avatar 🔒</h2>
+        <img ></img> */}
         </div>
-
+{/* 
         <form className='dropDown' action="">
-        <select onChange={handleGreeting} value={userImg} name="userName" id="" class="form-control">
+        <select onChange={handleGreeting} value={userImg} name="userName" id="" class="form-control" placeholder='Choose your Avatar🔒'>
           <option value="tickle122">tickle122</option>
           <option value="grumpy19">grumpy19</option>
           <option value="happyamy2016">happyamy2016</option>
@@ -67,7 +67,7 @@ const MyAccount = () => {
           <option value="jessjelly">jessjelly</option>
       </select>
       <button type="submit" className='loginBtn' onClick={loginSuccess}>Login</button>
-      </form>
+      </form> */}
     </div>
 
     <div className='userImg-container'>
@@ -75,7 +75,8 @@ const MyAccount = () => {
             <ul className='userImgs'>
             <li>
                 <div key={user.username}>
-                <img src={`${user.avatar_url}`} alt="image" className='avatarImg'></img>
+               <button><img src={`${user.avatar_url}`} alt="image" className='avatarImg'></img></button> 
+                
                 </div>
             </li>
             </ul>
