@@ -20,6 +20,7 @@ const SingleArticle = () => {
     const [addedComments, setAddedComments] = useState([]);
     const [commentsById, setCommentsById] = useState([]);
     const [deleteComment, setDeleteComment] = useState([]);
+    const [countComment, setCountComment] = useState([]);
 
     const [sortByDate, setSortByDate] = useState([]);
     
@@ -52,14 +53,12 @@ const SingleArticle = () => {
 
     // Vote 
     const PatchVote = (voteChange) => {
-        // console.log(voteCounter);
         axios
         .patch(`https://jeeanny.herokuapp.com/api/articles/${articleId}`,
         { 
             "inc_votes": voteChange
         })
     }
-
     const voteUp = () => {
         setVoteCounter(voteCounter + 1);
         PatchVote(1)
@@ -71,13 +70,15 @@ const SingleArticle = () => {
 
        // Delete comment
        const deleteComments = (commentId) => {
+        console.log(commentId,"<<<<<");
         axios
         .delete(`https://jeeanny.herokuapp.com/api/comments/${commentId}`)
         .then(()=>{
             alert("Your comment is deleted!");
         })
-
+        .then(setCountComment(countComment - 1));
     }
+
 
     // Post new comments
     const CreatePost = (comment) => {
@@ -125,7 +126,7 @@ const SingleArticle = () => {
         <div>
         <Header />
         <Nav />
-<div className='singleArticle-container'>
+        <div className='singleArticle-container'>
         <div className='articleList-container-single'>
             <ul>
                 <li className='articleList-singleArticle'>
