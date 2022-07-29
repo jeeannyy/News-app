@@ -1,0 +1,33 @@
+body {
+    font-family: 'Saira';
+    font-weight: 600;
+    color:rgb(0, 0, 0);
+    margin:0;
+  }
+
+ 
+
+  .greeting{
+margin-top: 40px;
+display: flex;
+justify-content: center;
+font-size: 18px;
+font-weight: 500;
+color: rgba(0, 0, 0, 0.748);
+  }
+
+  .form-control{
+    font-size: 25px;
+    padding:15px;
+    font-family: 'Saira';
+    font-weight: 500;
+  }
+
+  .loginBtn {
+    font-size: 25px;
+    padding:15px;
+    font-family: 'Saira';
+    font-weight: 500;
+    color:black;
+    margin-left: 5px;
+  }

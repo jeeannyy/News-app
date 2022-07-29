@@ -28,3 +28,9 @@ nav{
     color: black;
     cursor: pointer;
 }
+
+.accontLink{
+    text-decoration: none;
+    color: black;
+    cursor: pointer;
+}
