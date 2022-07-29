@@ -1,6 +1,6 @@
 .singleArticle-container{
-    margin-left: 20px;
-    margin-right: 20px;
+    margin-left: 40px;
+    margin-right: 40px;
 }
 
 
@@ -17,8 +17,7 @@
 .articleList-singleArticle{
     list-style-type: none;
     width:800px;
-    margin-left: 20px;
-    margin-right: 20px;
+  
 
     
 }
@@ -131,21 +130,24 @@ form{
 
 
 .commentsList{
-margin-left:400px;
+margin-left: 60px;
+
 width:50%;
 margin-bottom: 100px;
+display: flex;
+flex-wrap: wrap;
 }
 
 .singleCommentList h2{
     font-weight: 700;
-    font-size: 25px;
+    font-size: 22px;
     color: rgba(0, 0, 0, 0.858);
     
 }
 
 .singleCommentList h3{
     font-weight: 500;
-    font-size: 25px;
+    font-size: 20px;
 
 }
 

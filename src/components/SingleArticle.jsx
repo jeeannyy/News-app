@@ -21,14 +21,9 @@ const SingleArticle = () => {
     const [commentsById, setCommentsById] = useState([]);
     const [deleteComment, setDeleteComment] = useState([]);
 
-    // SortBy
     const [sortByDate, setSortByDate] = useState([]);
-    const [sortByVote, setSortByVote] = useState([]);
-    const [sortByComment, setSortByComment] = useState([]);
-    const [ascending, setAscending] = useState([]);
     
     const {articleId} = useParams();
-    const {commentId} = useParams();
     const {createdDate} = useParams();
 
     
@@ -56,33 +51,32 @@ const SingleArticle = () => {
 
 
     // Vote 
-    const PatchVote = () => {
+    const PatchVote = (voteChange) => {
+        // console.log(voteCounter);
         axios
         .patch(`https://jeeanny.herokuapp.com/api/articles/${articleId}`,
         { 
-            "inc_votes": voteCounter
-        });
+            "inc_votes": voteChange
+        })
     }
 
     const voteUp = () => {
         setVoteCounter(voteCounter + 1);
-        PatchVote()
+        PatchVote(1)
     };
     const voteDown = () => {
         setVoteCounter(voteCounter - 1);
-        PatchVote()
+        PatchVote(-1)
     };
 
-console.log(commentId, "comment");
-
        // Delete comment
-       const deleteComments = () => {
+       const deleteComments = (commentId) => {
         axios
         .delete(`https://jeeanny.herokuapp.com/api/comments/${commentId}`)
         .then(()=>{
-            console.log("Your comment is deleted!");
             alert("Your comment is deleted!");
         })
+
     }
 
     // Post new comments
@@ -141,7 +135,7 @@ console.log(commentId, "comment");
                     <h2>{articlesById.title}</h2>
                     <h4>{articlesById.body}</h4>
                     <div className='articleList-heart'>
-                        <h4>💜 {voteCounter}</h4>
+                        <h4>💜 {voteCounter + articlesById.votes}</h4>
                         <h4>💬 {articlesById.comment_count}</h4>
                     </div>
                     </div>
@@ -172,16 +166,16 @@ console.log(commentId, "comment");
 
 
         <div className='commentsList'>
-            {commentsById.map((comment) => (
-                    <div className='singleCommentList'>
-                <div className='singleCommentList' key={comment.article_id}>
+            {commentsById.map((comment) => {
+                console.log(comment);
+                return (
+                    <div className='singleCommentList' key={comment.article_id}>
                 <h2>{comment.author}</h2>
-                <h3>{comment.body}<span className='deleteBtn' onClick={deleteComments}>❎</span></h3>
-                </div>
-            </div>
-            ))}       
+                <h3>{comment.body}<span className='deleteBtn' onClick={()=> {deleteComments(comment.comment_id)}}>❎</span></h3>
+                </div> )}
+            )}       
         </div>
-
+        
         </div>
 
         <Footer />
