@@ -31,15 +31,18 @@ const MyAccount = () => {
 
         
         function handleGreeting(event) {
-            alert('Welcome to NC News!');
             setUserImg(event.target.value);
             
         }
 
-        function handleUserImg(event) {
-            // setUserImg(userImg);
-            event.preventDefault();
-        }
+        function loginSuccess(event){
+            alert('Welcome to NC News!');
+            event.defaultPrevented();
+
+            
+        };
+
+    
 
         if(loading) return <div>Loading...</div>
 
@@ -54,7 +57,7 @@ const MyAccount = () => {
         <img ></img>
         </div>
 
-        <form onSubmit={handleUserImg} className='dropDown' action="">
+        <form className='dropDown' action="">
         <select onChange={handleGreeting} value={userImg} name="userName" id="" class="form-control">
           <option value="tickle122">tickle122</option>
           <option value="grumpy19">grumpy19</option>
@@ -63,7 +66,7 @@ const MyAccount = () => {
           <option value="weegembump">weegembump</option>
           <option value="jessjelly">jessjelly</option>
       </select>
-      <button type="submit" className='loginBtn'>Login</button>
+      <button type="submit" className='loginBtn' onClick={loginSuccess}>Login</button>
       </form>
     </div>
 
@@ -73,11 +76,13 @@ const MyAccount = () => {
             <li>
                 <div key={user.username}>
                 <img src={`${user.avatar_url}`} alt="image" className='avatarImg'></img>
-            </div>
+                </div>
             </li>
             </ul>
         ))}
         </div>
+
+
         <Footer />
         </div>
     );
