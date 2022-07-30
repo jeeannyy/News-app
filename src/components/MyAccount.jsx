@@ -29,32 +29,24 @@ const MyAccount = () => {
             });
         }, []);
 
-        
-        function handleGreeting(event) {
-            setUserImg(event.target.value);
-            
-        }
-
         function loginSuccess(event){
-            alert('Welcome to NC News!');
+            alert('🎉 Welcome! 🎉');
             event.defaultPrevented();
 
             
         };
 
     
-
         if(loading) return <div>Loading...</div>
 
 
     return(
         <div>
         <Header />
-        <Nav />
         <div className='account-container'>
         <div className='greeting'>
-        {/* <h2>Hi! Choose your Avatar 🔒</h2>
-        <img ></img> */}
+        <h2>Choose your Avatar! 🧌</h2> 
+       
         </div>
 {/* 
         <form className='dropDown' action="">
@@ -75,7 +67,7 @@ const MyAccount = () => {
             <ul className='userImgs'>
             <li>
                 <div key={user.username}>
-               <button><img src={`${user.avatar_url}`} alt="image" className='avatarImg'></img></button> 
+               <button onClick={loginSuccess}><img src={`${user.avatar_url}`} alt="image" className='avatarImg'></img></button> 
                 
                 </div>
             </li>

@@ -5,32 +5,16 @@
     margin:0;
   }
 
- 
-/* 
-  .greeting{
-margin-top: 40px;
-display: flex;
-justify-content: center;
-font-size: 18px;
-font-weight: 500;
-color: rgba(0, 0, 0, 0.748);
+  .greeting h2{
+    display: flex;
+    justify-content: center;
+    font-size: 50px;
+    color: rgb(184, 240, 115);
+    font-style: italic;
+    -webkit-text-stroke: 2px black;
+ margin-top: 80px;
   }
 
-  .form-control{
-    font-size: 25px;
-    padding:15px;
-    font-family: 'Saira';
-    font-weight: 500;
-  }
-
-  .loginBtn {
-    font-size: 25px;
-    padding:15px;
-    font-family: 'Saira';
-    font-weight: 500;
-    color:black;
-    margin-left: 5px;
-  } */
 
   .userImg-container{
     display: flex;
@@ -44,9 +28,7 @@ color: rgba(0, 0, 0, 0.748);
 
   .userImgs{
     list-style-type: none;
-    /* display: flex;
-    justify-content: center; */
-    margin-top: 70px;
+    margin: 20px 50px 50px 60px;
    
    
   }
@@ -54,11 +36,16 @@ color: rgba(0, 0, 0, 0.748);
   .userImgs img{
     width:200px;
     height: 200px;
-    background-color: none;
     display: flex;
     flex-direction: row;
-    /* flex-wrap: wrap; */
-    /* align-content: flex-start; */
     cursor: pointer;
-    
+    padding:20px;
+  }
+
+  .userImgs button{
+    border: 5px solid rgba(33, 33, 33, 0.848);
+border-radius: 5%;
+background-color: white;
+
+
   }
