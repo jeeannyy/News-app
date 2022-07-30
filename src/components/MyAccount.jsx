@@ -31,15 +31,18 @@ const MyAccount = () => {
 
         
         function handleGreeting(event) {
-            alert('Welcome to NC News!');
             setUserImg(event.target.value);
             
         }
 
-        function handleUserImg(event) {
-            // setUserImg(userImg);
-            event.preventDefault();
-        }
+        function loginSuccess(event){
+            alert('Welcome to NC News!');
+            event.defaultPrevented();
+
+            
+        };
+
+    
 
         if(loading) return <div>Loading...</div>
 
@@ -50,21 +53,21 @@ const MyAccount = () => {
         <Nav />
         <div className='account-container'>
         <div className='greeting'>
-        <h2>Hi there!<p>If you want to add comments, please login 🔒</p></h2>
-        <img ></img>
+        {/* <h2>Hi! Choose your Avatar 🔒</h2>
+        <img ></img> */}
         </div>
-
-        <form onSubmit={handleUserImg} className='dropDown' action="">
-        <select onChange={handleGreeting} value={userImg} name="userName" id="" class="form-control">
+{/* 
+        <form className='dropDown' action="">
+        <select onChange={handleGreeting} value={userImg} name="userName" id="" class="form-control" placeholder='Choose your Avatar🔒'>
           <option value="tickle122">tickle122</option>
           <option value="grumpy19">grumpy19</option>
           <option value="happyamy2016">happyamy2016</option>
-          <option value="happyamy2016">cooljmessy</option>
-          <option value="happyamy2016">weegembump</option>
-          <option value="happyamy2016">jessjelly</option>
+          <option value="cooljmessy">cooljmessy</option>
+          <option value="weegembump">weegembump</option>
+          <option value="jessjelly">jessjelly</option>
       </select>
-      <button type="submit" className='loginBtn'>Login</button>
-      </form>
+      <button type="submit" className='loginBtn' onClick={loginSuccess}>Login</button>
+      </form> */}
     </div>
 
     <div className='userImg-container'>
@@ -72,12 +75,15 @@ const MyAccount = () => {
             <ul className='userImgs'>
             <li>
                 <div key={user.username}>
-                <img src={`${user.avatar_url}`} alt="image" className='avatarImg'></img>
-            </div>
+               <button><img src={`${user.avatar_url}`} alt="image" className='avatarImg'></img></button> 
+                
+                </div>
             </li>
             </ul>
         ))}
         </div>
+
+
         <Footer />
         </div>
     );
