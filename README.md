@@ -1,13 +1,10 @@
 # News app
+https://jeeannyy.github.io/News-app
 
 This is a News app that user can view, discuss, rate articles.
 It is divided into topics and it has different sorting options(Likes, comments, Latest). The user can add, delete their comment freely and like/dislike a comment.
 
 It interacts with an API which was developed during my News Backend project.
-
-## Link
-
-https://jeeannyy.github.io/News-app
 
 ## Related Backend Repo
 
