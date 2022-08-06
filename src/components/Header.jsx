@@ -4,7 +4,7 @@ import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 
 const Header = () => {
     return(
-        <header><Link className="HomeLink" to={"/"} >NC News</Link></header>
+        <header><Link className="HomeLink" to={"/News-app"} >NC News</Link></header>
     );
 }
 
