@@ -14,7 +14,7 @@ function App() {
     <BrowserRouter>
     <div>
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/News-app" element={<Home />} />
         <Route path="/topic/:topic" element={<Topic />} />
         <Route path="/article/:articleId" element={<SingleArticle />} />
         <Route path="/account" element={<MyAccount />} />
