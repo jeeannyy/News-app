@@ -1,7 +1,7 @@
 # News app
 
 This is a News app that user can view, discuss, rate articles.
-It is divided into topics and it has various sorting options(likes, comments, latest). The user can add, delete a comment freely and like/dislike a comment.
+It is divided into topics and it has different sorting options(likes, comments, latest). The user can add, delete a comment freely and like/dislike a comment.
 
 It interacts with an API which was developed during my News Backend project.
 
