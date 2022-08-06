@@ -9,6 +9,7 @@ It interacts with an API which was developed during my News Backend project.
 ## Related Backend Repo
 
 To access the API and backend for this application, please use the following link:
+
 https://github.com/jeeannyy/News-Backend
 
 ## How to run
