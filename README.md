@@ -32,7 +32,7 @@ npm install
 npm start
 ```
 
-## Technologies
+## Tech Stack
 
 - React
 - React Router
