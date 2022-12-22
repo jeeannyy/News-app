@@ -10,7 +10,7 @@ const ArticleList = () => {
 
     useEffect(() => {
         setLoading(true);
-        fetch(`https://jeeanny.herokuapp.com/api/articles`)
+        fetch(`https://news-backend-i2ta.onrender.com/api/articles`)
         .then((response) => response.json())
         .then((data) => {
             setArticles(data.articles);

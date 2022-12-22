@@ -1,5 +1,4 @@
-import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
-import axios from 'axios';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 
 import Home from './components/Home';

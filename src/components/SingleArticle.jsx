@@ -1,6 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import { useParams, useSearchParams, useNavigate} from "react-router-dom";
-import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
+import { useParams } from "react-router-dom";
 import axios from 'axios';
 
 import Header from './Header';
@@ -31,7 +30,7 @@ const SingleArticle = () => {
     // Get article ID
     useEffect(() => {
         setLoading(true);
-        fetch(`https://jeeanny.herokuapp.com/api/articles/${articleId}`)
+        fetch(`https://news-backend-i2ta.onrender.com/api/articles/${articleId}`)
         .then((response) => response.json())
         .then((data) => {
             setArticlesById(data.article);
@@ -42,7 +41,7 @@ const SingleArticle = () => {
     // Get comments list
     useEffect(() => {
         setLoading(true);
-        fetch(`https://jeeanny.herokuapp.com/api/articles/${articleId}/comments`)
+        fetch(`https://news-backend-i2ta.onrender.com/api/articles/${articleId}/comments`)
         .then((response) => response.json())
         .then((data) => {
             setCommentsById(data.articles);
@@ -54,7 +53,7 @@ const SingleArticle = () => {
     // Vote 
     const PatchVote = (voteChange) => {
         axios
-        .patch(`https://jeeanny.herokuapp.com/api/articles/${articleId}`,
+        .patch(`https://news-backend-i2ta.onrender.com/api/articles/${articleId}`,
         { 
             "inc_votes": voteChange
         })
@@ -72,7 +71,7 @@ const SingleArticle = () => {
        const deleteComments = (commentId) => {
         console.log(commentId,"<<<<<");
         axios
-        .delete(`https://jeeanny.herokuapp.com/api/comments/${commentId}`)
+        .delete(`https://news-backend-i2ta.onrender.com/api/comments/${commentId}`)
         .then(()=>{
             alert("Your comment is deleted!");
         })
@@ -83,7 +82,7 @@ const SingleArticle = () => {
     // Post new comments
     const CreatePost = (comment) => {
         axios
-        .post(`https://jeeanny.herokuapp.com/api/articles/${articleId}/comments`, 
+        .post(`https://news-backend-i2ta.onrender.com/api/articles/${articleId}/comments`, 
         {
             "username": comment.author,
             "body": comment.body
@@ -110,7 +109,7 @@ const SingleArticle = () => {
     // Sort by Date
     useEffect(() => {
         setLoading(true);
-        fetch(`https://jeeanny.herokuapp.com/api/articles?sort_by=created_at`)
+        fetch(`https://news-backend-i2ta.onrender.com/api/articles?sort_by=created_at`)
         .then((response) => response.json())
         .then((data) => {
             setSortByDate(data.articles);

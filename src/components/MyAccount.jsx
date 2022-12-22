@@ -1,7 +1,4 @@
 import React, {useState, useEffect} from 'react';
-import { useParams, useSearchParams, useNavigate} from "react-router-dom";
-import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
-import axios from 'axios';
 
 import Header from './Header';
 import Nav from './Nav';
@@ -16,11 +13,10 @@ import '../styles/Account.css';
 const MyAccount = () => {
     const [loading, setLoading] = useState(true);
     const [users, setUsers] = useState({});
-    const [userImg, setUserImg] = useState("");
 
         useEffect(() => {
             setLoading(true);
-            fetch(`https://jeeanny.herokuapp.com/api/users`)
+            fetch(`https://news-backend-i2ta.onrender.com/api/users`)
             .then((response) => response.json())
             .then((data) => {
                 setUsers(data.users);
@@ -41,26 +37,13 @@ const MyAccount = () => {
 
 
     return(
-        <div>
+    <div>
         <Header />
         <div className='account-container'>
         <div className='greeting'>
         <h2>Choose your Avatar! 🧌</h2> 
-       
-        </div>
-{/* 
-        <form className='dropDown' action="">
-        <select onChange={handleGreeting} value={userImg} name="userName" id="" class="form-control" placeholder='Choose your Avatar🔒'>
-          <option value="tickle122">tickle122</option>
-          <option value="grumpy19">grumpy19</option>
-          <option value="happyamy2016">happyamy2016</option>
-          <option value="cooljmessy">cooljmessy</option>
-          <option value="weegembump">weegembump</option>
-          <option value="jessjelly">jessjelly</option>
-      </select>
-      <button type="submit" className='loginBtn' onClick={loginSuccess}>Login</button>
-      </form> */}
-    </div>
+       </div>
+       </div>
 
     <div className='userImg-container'>
         {users.map((user) => (

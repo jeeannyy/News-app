@@ -26,7 +26,7 @@ console.log(sort, "<<<<<");
 
     useEffect(() => {
         setLoading(true);
-        fetch(sort ? `https://jeeanny.herokuapp.com/api/articles?topic=${topic}&sort_by=${sort}` : `https://jeeanny.herokuapp.com/api/articles?topic=${topic}`)
+        fetch(sort ? `https://news-backend-i2ta.onrender.com/api/articles?topic=${topic}&sort_by=${sort}` : `https://news-backend-i2ta.onrender.com/api/articles?topic=${topic}`)
         .then((response) => response.json())
         .then((data) => {
             setArticlesByTopics(data.articles);
